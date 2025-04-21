@@ -159,5 +159,5 @@ private:
 	Animation animation_run_down;
 
 	Animation* cur_animation = nullptr;
-	Facing facing = Facing::Down;
+	Facing facing = Facing::Right;
 };

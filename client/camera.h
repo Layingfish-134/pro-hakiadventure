@@ -36,5 +36,5 @@ public:
 	}
 private:
 	Vector2 size;
-	Vector2 position;
+	Vector2 position={0,0};
 };

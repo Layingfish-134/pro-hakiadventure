@@ -10,6 +10,7 @@
 #include<codecvt>
 #include<fstream>
 #include<sstream>
+#include<iostream>
 
 enum class Stage
 {
@@ -130,7 +131,7 @@ void load_resources(HWND hwnd)
 
 void login_to_server(HWND hwnd)
 {
-	client = new httplib::Client(str_address);
+	client = new httplib::Client("localhost:25565");
 	client->set_keep_alive(true);
 
 	httplib::Result result = client->Post("/login");
@@ -200,26 +201,26 @@ int main()
 	Camera camera_ui, camera_scene;
 
 	Player player_1(
-		&atlas_1P_idle_up,
-		&atlas_1P_idle_down,
 		&atlas_1P_idle_left,
 		&atlas_1P_idle_right,
-		&atlas_1P_run_up,
-		&atlas_1P_run_down,
+		&atlas_1P_idle_up,
+		&atlas_1P_idle_down,
 		&atlas_1P_run_left,
-		&atlas_1P_run_right
+		&atlas_1P_run_right,
+		&atlas_1P_run_up,
+		&atlas_1P_run_down
 	);
 
 
 	Player player_2(
-		&atlas_2P_idle_up,
-		&atlas_2P_idle_down,
 		&atlas_2P_idle_left,
 		&atlas_2P_idle_right,
-		&atlas_2P_run_up,
-		&atlas_2P_run_down,
+		&atlas_2P_idle_up,
+		&atlas_2P_idle_down,
 		&atlas_2P_run_left,
-		&atlas_2P_run_right
+		&atlas_2P_run_right,
+		&atlas_2P_run_up,
+		&atlas_2P_run_down
 	);
 
 	camera_scene.set_size({ 1280,720 });
@@ -290,7 +291,8 @@ int main()
 						break;
 					}
 					(id_player == 1) ? progress_1++ : progress_2++;
-					if (++idx_char >= str_line.size())
+					idx_char++;
+					if (idx_char >= str_line.size())
 					{
 						idx_char = 0;
 						idx_line++;
