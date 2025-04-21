@@ -68,7 +68,7 @@ int main()
 			progress_1 = std::stoi(req.body);
 			//存储玩家1的进度
 
-			res.set_content(std::to_string(progress_1), "text/plain");
+			res.set_content(std::to_string(progress_2), "text/plain");
 			//给玩家1玩家2的进度以绘图
 		}
 	);
@@ -80,8 +80,8 @@ int main()
 			progress_2 = std::stoi(req.body);
 			//存储玩家1的进度
 
-			res.set_content(std::to_string(progress_2), "text/plain");
-			//给玩家1玩家2的进度以绘图
+			res.set_content(std::to_string(progress_1), "text/plain");
+			//给玩家2玩家1的进度以绘图
 		}
 	);
 
